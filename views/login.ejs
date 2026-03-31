@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-black">
+    <%- include('partials/navbar') %>
+
+        <main class="min-h-[85vh] flex items-center justify-center bg-zinc-950 p-[1em]">
+            <div class="w-[95%] md:w-[40%] flex flex-col items-start gap-8">
+
+                <header class="text-left">
+                    <h1 class="text-3xl font-black text-white uppercase">
+                        Login
+                    </h1>
+                </header>
+
+                <form action="/" method="POST" class="w-full space-y-4">
+
+                    <div class="w-full">
+                        <input type="text" name="uid" placeholder="UID" required
+                            class="w-full bg-zinc-900 text-white px-4 py-3 md:px-6 md:py-4 rounded-md placeholder:text-zinc-600 focus:bg-zinc-800 outline-none border-none transition-all">
+                    </div>
+
+                    <div class="w-full">
+                        <input type="password" name="password" placeholder="Password" required
+                            class="w-full bg-zinc-900 text-white px-4 py-3 md:px-6 md:py-4 rounded-md placeholder:text-zinc-600 focus:bg-zinc-800 outline-none border-none transition-all">
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-white text-black font-black py-4 rounded-md hover:bg-zinc-200 transition-all uppercase mt-2">
+                        LOGIN
+                    </button>
+                </form>
+
+                <div class="w-full text-left pt-4">
+                    <p class="text-center text-xs text-zinc-600 font-bold tracking-widest uppercase">
+                        Not registered yet ?
+                        <a href="/register"
+                            class="text-zinc-400 hover:text-white transition-colors underline underline-offset-8">
+                            Register now
+                        </a>
+                    </p>
+                </div>
+
+            </div>
+        </main>
+</body>
+
+</html>
