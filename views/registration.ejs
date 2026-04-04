@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INNOVEX-2.O ( Registration )</title>
+    <link rel="stylesheet" href="/styles/main.css">
+
+</head>
+
+<body>
+    <!-- GRID BG -->
+    <div class="background-svg-container">
+        <svg class="grid-layer" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="dashedGrid" width="18" height="18" patternTransform="scale(2)"
+                    patternUnits="userSpaceOnUse">
+                    <rect width="100%" height="100%" fill="#020408" />
+                    <path d="M20 0H0v20" fill="none" stroke="#1e211d" stroke-width="0.8" stroke-dasharray="2,2" />
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#dashedGrid)" />
+        </svg>
+    </div>
+
+
+    <!-- MAIN -->
+    <main class="main">
+        <%- include('partials/navbar') %>
+
+            <div class="container">
+                <div class="content">
+                    <h1>Register</h1>
+
+                    <!-- Form -->
+                    <form id="registrationForm">
+                        <select name="event-name" id="eventName" required>
+                            <option value="" disabled selected>Select an Event</option>
+                            <option value="Web Designing" data-members="2">Web Designing</option>
+                            <option value="Quiz" data-members="3">Technical Quiz</option>
+                            <option value="Coding and Debugging" data-members="2">Coding and Debugging</option>
+                            <option value="Hackathon" data-members="4">12 HRS Hackathon</option>
+                            <option value="Debate" data-members="4">Debate</option>
+                            <option value="Elocution" data-members="1">Elocution</option>
+                            <option value="Mock Interview" data-members="1">Mock Interview</option>
+                            <option value="Free Fire" data-members="5">Gaming ( Free Fire )</option>
+                            <option value="BGMI" data-members="5">Gaming ( BGMI )</option>
+                            <option value="Startup Pitch" data-members="3">Startup Pitch</option>
+                            <option value="Short Film Making" data-members="4">Short Film Making</option>
+                            <option value="Prompt War" data-members="1">Prompt War</option>
+                        </select>
+
+                        <input type="text" placeholder="College | University name" name="college-name" required>
+
+                        <div id="dynamic-fields-container"> </div>
+
+                        <!-- Payment QR -->
+                        <div class="payment-info">
+                            <p>BANK INFORMATION</p>
+                            <img src="/images/Bank-QR.jpeg" alt="">
+                            <h4>{ BENGALURU CITY UNIVERSITY }<br>AC NO : 38927996110<br>IFSC : SBIN004007</h4>
+                        </div>
+
+                        <input type="number" placeholder="UTR number" name="utrNo" required>
+
+                        <div class="consent">
+                            <input type="checkbox" name="consent" required>
+                            <p>I certify that my information is accurate and I further agree to be bound by the rules,
+                                regulations, and final decisions of the organizing committee</p>
+                        </div>
+
+                        <button type="submit" class="btn-primary">REGISTER</button>
+
+                    </form>
+
+                    <p class="footer-note">MADE WITH 💖 BY : <a href="https://ankith.dev">ANKITH</a></p>
+
+                </div>
+            </div>
+    </main>
+
+
+    <!-- MODAL -->
+    <div id="successModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <svg width="100" height="100" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path fill="#36cc00" fill-rule="evenodd"
+                            d="M8,16 C12.4183,16 16,12.4183 16,8 C16,3.58172 12.4183,0 8,0 C3.58172,0 0,3.58172 0,8 C0,12.4183 3.58172,16 8,16 Z M11.7071,6.70711 C12.0976,6.31658 12.0976,5.68342 11.7071,5.29289 C11.3166,4.90237 10.6834,4.90237 10.2929,5.29289 L7,8.58579 L5.70711,7.29289 C5.31658,6.90237 4.68342,6.90237 4.29289,7.29289 C3.90237,7.68342 3.90237,8.31658 4.29289,8.70711 L6.29289,10.7071 C6.68342,11.0976 7.31658,11.0976 7.70711,10.7071 L11.7071,6.70711 Z">
+                        </path>
+                    </g>
+                </svg>
+                <h2>Registered !</h2>
+            </div>
+            <p>Registration completed ! Payment verification is under process.</p>
+
+            <div class="whatsapp-section">
+                <p>Join our official group for updates :</p>
+                <a href=" " target="_blank" class="whatsapp-btn">
+                    <svg viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <title>whatsapp [#128]</title>
+                            <desc>Created with Sketch.</desc>
+                            <defs> </defs>
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="Dribbble-Light-Preview" transform="translate(-300.000000, -7599.000000)"
+                                    fill="#000000">
+                                    <g id="icons" transform="translate(56.000000, 160.000000)">
+                                        <path
+                                            d="M259.821,7453.12124 C259.58,7453.80344 258.622,7454.36761 257.858,7454.53266 C257.335,7454.64369 256.653,7454.73172 254.355,7453.77943 C251.774,7452.71011 248.19,7448.90097 248.19,7446.36621 C248.19,7445.07582 248.934,7443.57337 250.235,7443.57337 C250.861,7443.57337 250.999,7443.58538 251.205,7444.07952 C251.446,7444.6617 252.034,7446.09613 252.104,7446.24317 C252.393,7446.84635 251.81,7447.19946 251.387,7447.72462 C251.252,7447.88266 251.099,7448.05372 251.27,7448.3478 C251.44,7448.63589 252.028,7449.59418 252.892,7450.36341 C254.008,7451.35771 254.913,7451.6748 255.237,7451.80984 C255.478,7451.90987 255.766,7451.88687 255.942,7451.69881 C256.165,7451.45774 256.442,7451.05762 256.724,7450.6635 C256.923,7450.38141 257.176,7450.3464 257.441,7450.44643 C257.62,7450.50845 259.895,7451.56477 259.991,7451.73382 C260.062,7451.85686 260.062,7452.43903 259.821,7453.12124 M254.002,7439 L253.997,7439 L253.997,7439 C248.484,7439 244,7443.48535 244,7449 C244,7451.18666 244.705,7453.21526 245.904,7454.86076 L244.658,7458.57687 L248.501,7457.3485 C250.082,7458.39482 251.969,7459 254.002,7459 C259.515,7459 264,7454.51465 264,7449 C264,7443.48535 259.515,7439 254.002,7439"
+                                            id="whatsapp-[#128]"> </path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                    JOIN WHATSAPP GROUP
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/scripts/main.js"></script>
+</body>
+
+</html>

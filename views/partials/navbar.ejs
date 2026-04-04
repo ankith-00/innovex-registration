@@ -1,19 +1,17 @@
-<nav
-    class="flex items-center justify-between px-4 md:px-[6em] py-6 bg-zinc-950 border-b border-zinc-800 sticky top-0 z-50">
-
-    <div class="flex items-center gap-2">
-        <h1 class="text-white font-bold tracking-tighter text-xl">INNOVEX</h1>
+<nav>
+    <div class="nav-logo">
+        <h1 class="innove">INNOVE<span class="x">X</span></h1>
+        <p>COMPETE INNOVATE CONQUER</p>
     </div>
 
-    <div>
-        <% if (currentPage==='/register' ) { %>
-            <a href="/"
-                class="bg-zinc-200 px-6 md:px-10 py-2 rounded-md font-medium text-sm text-black hover:bg-white transition-colors">
-                Login
+    <div class="nav-buttons">
+        <% if (locals.currentPage==='/' ) { %>
+            <!-- Volunteer Button -->
+            <a href="/volunteer">
+                Volunteer
             </a>
-            <% } else { %>
-                <a href="/register"
-                    class="bg-zinc-200 px-6 md:px-10 py-2 rounded-md font-medium text-sm text-black hover:bg-white transition-colors">
+            <% } else if (locals.currentPage==='/volunteer' ) { %>
+                <a href="/">
                     Register
                 </a>
                 <% } %>
