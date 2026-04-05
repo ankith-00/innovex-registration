@@ -193,6 +193,7 @@ input::placeholder {
     color: #fff;
     padding-bottom: 1.2em;
     font-size: 1em;
+    letter-spacing: 1px;
 }
 
 .payment-info h4 {
@@ -202,12 +203,7 @@ input::placeholder {
     font-size: 1em;
     font-weight: 300;
     padding-bottom: 0em;
-    padding-top: 1em;
     line-height: 1.5em;
-}
-
-.payment-info img {
-    width: 50%;
 }
 
 .consent {
@@ -428,10 +424,6 @@ input::placeholder {
     .container .content form {
         margin-top: -0.8em;
         padding-bottom: 2.5em;
-    }
-
-    .payment-info img {
-        width: 80%;
     }
 
     .consent p {
