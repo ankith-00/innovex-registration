@@ -75,37 +75,75 @@ const modal = document.getElementById('successModal');
 const whatsappBtn = document.querySelector('.whatsapp-btn');
 const eventSelect = document.getElementById('eventName');
 
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const selectedEvent = eventSelect.value;
-    const targetLink = whatsappLinks[selectedEvent] || "https://chat.whatsapp.com/DEFAULT_LINK";
+if (form) {
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const selectedEvent = eventSelect.value;
+        const targetLink = whatsappLinks[selectedEvent];
 
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
 
-    try {
-        const response = await fetch('/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
-        const result = await response.json();
-        if (response.ok) {
-            whatsappBtn.href = targetLink;
-            modal.style.display = 'flex';
-            form.reset();
-        } else {
-            alert(`Error: ${result.message || 'Submission failed'}`);
+        try {
+            const response = await fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            const result = await response.json();
+            if (response.ok) {
+                whatsappBtn.href = targetLink;
+                modal.style.display = 'flex';
+                form.reset();
+            } else {
+                alert(`Error: ${result.message || 'Submission failed'}`);
+            }
+        } catch (error) {
+            console.error("Network Error:", error);
         }
-    } catch (error) {
-        console.error("Network Error:", error);
-    }
-})
+    });
+}
 
 
 // Function to close
 function closeModal() {
-    modal.style.display = 'none';
+    if (modal) modal.style.display = 'none';
+}
+
+
+
+// VOLUNTEER LOGIN FORM
+const loginForm = document.getElementById('loginForm');
+
+if (loginForm) {
+    loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(loginForm);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                alert('Login Successful!');
+                window.location.href = '/';
+            } else {
+                alert(`Error: ${result.message || 'Login failed'}`);
+            }
+        } catch (error) {
+            console.error("Network Error:", error);
+            alert('An error occurred during login. Please try again.');
+        }
+    });
 }
