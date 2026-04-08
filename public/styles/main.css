@@ -369,6 +369,7 @@ input::placeholder {
     font-weight: 500;
     margin-bottom: -2em;
     clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    font-size: clamp(0.9rem, 0.8rem + 1.5vw, 1rem);
 }
 
 .whatsapp-btn svg {

@@ -13,18 +13,31 @@ router.get('/', (req, res) => {
 router.post('/register', async (req, res) => {
     try {
         const registrationData = req.body;
+        const TeamMembers = registrationData.members || registrationData['members[]'];
 
-        // Insert to MongoDB
-        const collection = mongoose.connection.db.collection('registration-data');
-        const result = await collection.insertOne({
-            ...registrationData,
+        const data = {
+            eventName: registrationData.eventName,
+            collegeName: registrationData.collegeName,
+            teamName: registrationData.teamName,
+            email: registrationData.email,
+            phoneNo: registrationData.phoneNo,
+            registrationFee: registrationData.registrationFee,
+            utrNo: registrationData.utrNo,
+            members: Array.isArray(TeamMembers) ? TeamMembers : [TeamMembers],
             submittedAt: new Date()
+        };
+
+        const collection = mongoose.connection.db.collection('registration-data');
+        const result = await collection.insertOne(data);
+
+        res.status(200).json({
+            status: result.acknowledged,
+            message: "Registered Successfully"
         });
-        res.status(200).json({ status: result.acknowledged, message: "Registered Sucessfully" });
     } catch (error) {
+        console.error("Registration Error:", error);
         res.status(500).json({ message: "Server Error", error: error.message });
     }
-
-})
+});
 
 module.exports = router;

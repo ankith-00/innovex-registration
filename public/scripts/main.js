@@ -9,9 +9,9 @@ const whatsappLinks = {
     "Mock Interview": "https://chat.whatsapp.com/CI6Dbx0Jfm1I4yRtA6iPM7?mode=gi_t",
     "Free Fire": "https://chat.whatsapp.com/Fmej1iqXnYjDoUN6Yehcnq?mode=gi_t",
     "BGMI": "https://chat.whatsapp.com/EvlzqLEdoHJ8w6OvJyCOKB?mode=gi_t",
-    "Startup Pitch": "",
+    "Startup Pitch": "https://chat.whatsapp.com/HgX5Kw7K2DyDdqYUVnDt4I?mode=gi_t",
     "Short Film Making": "https://chat.whatsapp.com/Dy1aPQGeMHI07htAhH7j6Q?mode=gi_t",
-    "Prompt War": ""
+    "Prompt War": "https://chat.whatsapp.com/Gt957EMAACj13l1Xo3YeLv?mode=gi_t"
 };
 
 
@@ -78,11 +78,18 @@ const eventSelect = document.getElementById('eventName');
 if (form) {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
+
         const selectedEvent = eventSelect.value;
         const targetLink = whatsappLinks[selectedEvent];
 
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
+
+        data['members'] = formData.getAll('members[]');
+        delete data['members[]'];
+
+        console.log(data);
+
 
         try {
             const response = await fetch('/register', {
@@ -92,16 +99,21 @@ if (form) {
                 },
                 body: JSON.stringify(data),
             });
+
             const result = await response.json();
+
             if (response.ok) {
                 whatsappBtn.href = targetLink;
                 modal.style.display = 'flex';
                 form.reset();
+                const container = document.getElementById('dynamic-fields-container');
+                if (container) container.innerHTML = '';
             } else {
                 alert(`Error: ${result.message || 'Submission failed'}`);
             }
         } catch (error) {
             console.error("Network Error:", error);
+            alert("Could not connect to server. Please check if the backend is running.");
         }
     });
 }
