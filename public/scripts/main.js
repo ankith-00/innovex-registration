@@ -71,13 +71,18 @@ document.addEventListener('DOMContentLoaded', function () {
 // REGISTRATION FORM
 const form = document.getElementById('registrationForm');
 const modal = document.getElementById('successModal');
-
 const whatsappBtn = document.querySelector('.whatsapp-btn');
 const eventSelect = document.getElementById('eventName');
 
 if (form) {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBg = submitBtn.style.backgroundColor; // Store original color
+        submitBtn.style.backgroundColor = 'red';
+        submitBtn.style.color = '#fff';
+        submitBtn.disabled = true;
+        submitBtn.innerText = "REGISTERING...";
 
         const selectedEvent = eventSelect.value;
         const targetLink = whatsappLinks[selectedEvent];
@@ -88,8 +93,7 @@ if (form) {
         data['members'] = formData.getAll('members[]');
         delete data['members[]'];
 
-        console.log(data);
-
+        // console.log(data);
 
         try {
             const response = await fetch('/register', {
@@ -109,11 +113,16 @@ if (form) {
                 const container = document.getElementById('dynamic-fields-container');
                 if (container) container.innerHTML = '';
             } else {
-                alert(`Error: ${result.message || 'Submission failed'}`);
+                alert(`INTERNAL SERVER ERROR !\n${result.message || 'SUBMITION FAILED !'}`);
             }
         } catch (error) {
             console.error("Network Error:", error);
-            alert("Could not connect to server. Please check if the backend is running.");
+            alert(`INTERNAL SERVER ERROR !\n${error.message}`);
+
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.style.backgroundColor = originalBg;
+            submitBtn.innerText = "REGISTER";
         }
     });
 }
