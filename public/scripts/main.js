@@ -6,7 +6,7 @@ const whatsappLinks = {
     "Hackathon": "https://chat.whatsapp.com/FBcqKbKLZbRF4pLSYMU2Ll",
     "Debate": "https://chat.whatsapp.com/Cmqm4KN6QfDEgIMxuo2QxM?mode=gi_t",
     "Elocution": "https://chat.whatsapp.com/G0vAEU0bBOFEcJZvC8g2aC?mode=gi_t",
-    "Mock Interview": "https://chat.whatsapp.com/CI6Dbx0Jfm1I4yRtA6iPM7?mode=gi_t",
+    //"Mock Interview": "https://chat.whatsapp.com/CI6Dbx0Jfm1I4yRtA6iPM7?mode=gi_t",
     "Free Fire": "https://chat.whatsapp.com/Fmej1iqXnYjDoUN6Yehcnq?mode=gi_t",
     "BGMI": "https://chat.whatsapp.com/EvlzqLEdoHJ8w6OvJyCOKB?mode=gi_t",
     "Startup Pitch": "https://chat.whatsapp.com/HgX5Kw7K2DyDdqYUVnDt4I?mode=gi_t",
@@ -25,9 +25,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function getFee(memberCount) {
         if (memberCount === 1) return 49;
-        if (memberCount === 2) return 99;
-        if (memberCount === 3) return 149;
-        if (memberCount >= 4) return 199;
+        if (memberCount === 2) return 49;
+        if (memberCount === 3) return 49;
+        if (memberCount >= 4) return 49;
     }
 
     eventSelect.addEventListener('change', function () {
