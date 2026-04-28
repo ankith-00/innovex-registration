@@ -195,6 +195,11 @@ input::placeholder {
     letter-spacing: 1px;
 }
 
+.payment-info img {
+    width: 17em;
+    margin-bottom: 1.5em;
+}
+
 .payment-info h4 {
     text-align: center;
     font-family: var(--font-jetbrains);
