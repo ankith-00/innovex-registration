@@ -135,6 +135,7 @@ function closeModal() {
 
 
 
+
 // VOLUNTEER LOGIN FORM
 const loginForm = document.getElementById('loginForm');
 
@@ -142,29 +143,36 @@ if (loginForm) {
     loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
+        const submitBtn = loginForm.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.innerText = 'LOGGING IN...';
+
         const formData = new FormData(loginForm);
         const data = Object.fromEntries(formData.entries());
 
         try {
             const response = await fetch('/login', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
             });
 
             const result = await response.json();
 
             if (response.ok) {
-                alert('Login Successful!');
-                window.location.href = '/';
+                // Store JWT as a cookie so the server can read it on /dashboard load
+                const maxAge = 8 * 60 * 60; // 8 hours in seconds
+                document.cookie = `token=${result.token}; path=/; max-age=${maxAge}; SameSite=Strict`;
+                window.location.href = '/login/dashboard';
             } else {
                 alert(`Error: ${result.message || 'Login failed'}`);
             }
         } catch (error) {
             console.error("Network Error:", error);
             alert('An error occurred during login. Please try again.');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerText = 'LOGIN';
         }
     });
 }

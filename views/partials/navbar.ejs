@@ -5,15 +5,12 @@
     </div>
 
     <div class="nav-buttons">
-        <% if (locals.currentPage==='/' ) { %>
-            <!-- Volunteer Button -->
-            <a href="/login">
-                Volunteer
-            </a>
-            <% } else if (locals.currentPage==='/login' ) { %>
-                <a href="/">
-                    Register
-                </a>
-                <% } %>
+        <% if (locals.currentPage === '/') { %>
+            <a href="/login">Volunteer</a>
+        <% } else if (locals.currentPage === '/login') { %>
+            <a href="/">Register</a>
+        <% } else if (locals.currentPage === '/dashboard') { %>
+            <button id="logoutBtn" class="btn-logout">LOGOUT</button>
+        <% } %>
     </div>
 </nav>
