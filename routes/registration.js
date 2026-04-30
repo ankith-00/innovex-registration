@@ -27,6 +27,7 @@ router.post('/register', async (req, res) => {
             submittedAt: new Date()
         };
 
+        await mongoose.connection.asPromise();
         const collection = mongoose.connection.db.collection('registration-data');
         const result = await collection.insertOne(data);
 
@@ -36,7 +37,7 @@ router.post('/register', async (req, res) => {
         });
     } catch (error) {
         console.error("Registration Error:", error);
-        res.status(500).json({ message: "Server Error", error: error.message });
+        res.status(500).json({ message: "Server Error", error: error.message, stack: error.stack });
     }
 });
 

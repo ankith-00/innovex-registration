@@ -113,7 +113,8 @@ if (form) {
                 const container = document.getElementById('dynamic-fields-container');
                 if (container) container.innerHTML = '';
             } else {
-                alert(`INTERNAL SERVER ERROR !\n${result.message || 'SUBMITION FAILED !'}`);
+                alert(`INTERNAL SERVER ERROR !\n${result.message || 'SUBMITION FAILED !'}\nDetails: ${result.error || ''}`);
+                if (result.stack) console.error("Server Stack Trace:", result.stack);
             }
         } catch (error) {
             console.error("Network Error:", error);
@@ -165,7 +166,8 @@ if (loginForm) {
                 document.cookie = `token=${result.token}; path=/; max-age=${maxAge}; SameSite=Strict`;
                 window.location.href = '/login/dashboard';
             } else {
-                alert(`Error: ${result.message || 'Login failed'}`);
+                alert(`Error: ${result.message || 'Login failed'}\nDetails: ${result.error || ''}`);
+                if (result.stack) console.error("Server Stack Trace:", result.stack);
             }
         } catch (error) {
             console.error("Network Error:", error);

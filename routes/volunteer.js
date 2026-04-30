@@ -17,6 +17,7 @@ router.post('/', async (req, res) => {
     try {
         const { uid, password } = req.body;
 
+        await mongoose.connection.asPromise();
         const collection = mongoose.connection.db.collection('volunteers');
         const user = await collection.findOne({ uid: uid });
 
@@ -46,7 +47,7 @@ router.post('/', async (req, res) => {
 
     } catch (error) {
         console.error("Login Error:", error);
-        res.status(500).json({ success: false, message: "Server Error", error: error.message });
+        res.status(500).json({ success: false, message: "Server Error", error: error.message, stack: error.stack });
     }
 });
 
@@ -57,6 +58,7 @@ router.get('/dashboard', authenticateToken, async (req, res) => {
         const { uid, event } = req.user;
         const isAdmin = event === 'admin';
 
+        await mongoose.connection.asPromise();
         const collection = mongoose.connection.db.collection('registration-data');
 
         let registrations;
@@ -84,7 +86,7 @@ router.get('/dashboard', authenticateToken, async (req, res) => {
 
     } catch (error) {
         console.error("Dashboard Error:", error);
-        res.status(500).send("Server Error");
+        res.status(500).send(`Server Error: ${error.message} <br><br> ${error.stack}`);
     }
 });
 
@@ -99,6 +101,7 @@ router.patch('/dashboard/status/:id', authenticateToken, async (req, res) => {
         }
 
         const { ObjectId } = require('mongodb');
+        await mongoose.connection.asPromise();
         const collection = mongoose.connection.db.collection('registration-data');
 
         const result = await collection.updateOne(
@@ -114,7 +117,7 @@ router.patch('/dashboard/status/:id', authenticateToken, async (req, res) => {
 
     } catch (error) {
         console.error("Status Update Error:", error);
-        res.status(500).json({ success: false, message: "Server Error", error: error.message });
+        res.status(500).json({ success: false, message: "Server Error", error: error.message, stack: error.stack });
     }
 });
 
