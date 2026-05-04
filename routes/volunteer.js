@@ -75,11 +75,14 @@ router.get('/dashboard', authenticateToken, async (req, res) => {
             ? [...new Set(registrations.map(r => r.eventName).filter(Boolean))].sort()
             : [event];
 
+        // Normalise _id to plain string so the client receives a consistent hex string
+        const serialisable = registrations.map(r => ({ ...r, _id: r._id.toString() }));
+
         return res.render('dashboard', {
             uid,
             event,
             isAdmin,
-            registrations: JSON.stringify(registrations),
+            registrations: JSON.stringify(serialisable),
             allEvents: JSON.stringify(allEvents),
             totalCount: registrations.length
         });
@@ -104,13 +107,25 @@ router.patch('/dashboard/status/:id', authenticateToken, async (req, res) => {
         await mongoose.connection.asPromise();
         const collection = mongoose.connection.db.collection('registration-data');
 
+        const reg = await collection.findOne({ _id: new ObjectId(id) });
+        if (!reg) {
+            return res.status(404).json({ success: false, message: "Registration not found" });
+        }
+        
+        const wasPresent = reg.attendance === 'present';
+
         const result = await collection.updateOne(
             { _id: new ObjectId(id) },
             { $set: { attendance: status, attendanceUpdatedAt: new Date() } }
         );
 
-        if (result.matchedCount === 0) {
-            return res.status(404).json({ success: false, message: "Registration not found" });
+        if (status === 'present' && !wasPresent) {
+            const sendMail = require('../utils/mailer');
+            const emailToSend = reg.email;
+            const nameToSend = reg.teamName || reg.eventName || 'User';
+            if (emailToSend) {
+                sendMail(emailToSend, nameToSend);
+            }
         }
 
         return res.status(200).json({ success: true, status });
@@ -118,6 +133,72 @@ router.patch('/dashboard/status/:id', authenticateToken, async (req, res) => {
     } catch (error) {
         console.error("Status Update Error:", error);
         res.status(500).json({ success: false, message: "Server Error", error: error.message, stack: error.stack });
+    }
+});
+
+
+// UPDATE REGISTRATION INFO — admin can edit all fields (protected)
+router.patch('/dashboard/update/:id', authenticateToken, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { uid, event } = req.user;
+        const isAdmin = event === 'admin';
+
+        // Only admin can use this endpoint
+        if (!isAdmin) {
+            return res.status(403).json({ success: false, message: 'Forbidden: Admin only' });
+        }
+
+        const allowedFields = ['teamName', 'eventName', 'collegeName', 'email', 'phoneNo', 'utrNo', 'attendance', 'members'];
+        const updateFields = {};
+
+        allowedFields.forEach(field => {
+            if (req.body[field] !== undefined) {
+                updateFields[field] = req.body[field];
+            }
+        });
+
+        if (updateFields.attendance && !['present', 'absent', 'verified', ''].includes(updateFields.attendance)) {
+            return res.status(400).json({ success: false, message: 'Invalid attendance value' });
+        }
+
+        if (Object.keys(updateFields).length === 0) {
+            return res.status(400).json({ success: false, message: 'No valid fields to update' });
+        }
+
+        updateFields.lastEditedAt = new Date();
+        updateFields.lastEditedBy = uid;
+
+        const { ObjectId } = require('mongodb');
+        await mongoose.connection.asPromise();
+        const collection = mongoose.connection.db.collection('registration-data');
+
+        const reg = await collection.findOne({ _id: new ObjectId(id) });
+        if (!reg) {
+            return res.status(404).json({ success: false, message: 'Registration not found' });
+        }
+        
+        const wasPresent = reg.attendance === 'present';
+
+        const result = await collection.updateOne(
+            { _id: new ObjectId(id) },
+            { $set: updateFields }
+        );
+
+        if (updateFields.attendance === 'present' && !wasPresent) {
+            const sendMail = require('../utils/mailer');
+            const emailToSend = updateFields.email || reg.email;
+            const nameToSend = updateFields.teamName || reg.teamName || 'User';
+            if (emailToSend) {
+                sendMail(emailToSend, nameToSend);
+            }
+        }
+
+        return res.status(200).json({ success: true, updated: updateFields });
+
+    } catch (error) {
+        console.error('Update Registration Error:', error);
+        res.status(500).json({ success: false, message: 'Server Error', error: error.message });
     }
 });
 

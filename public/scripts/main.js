@@ -166,12 +166,12 @@ if (loginForm) {
                 document.cookie = `token=${result.token}; path=/; max-age=${maxAge}; SameSite=Strict`;
                 window.location.href = '/login/dashboard';
             } else {
-                alert(`Error: ${result.message || 'Login failed'}\nDetails: ${result.error || ''}`);
-                if (result.stack) console.error("Server Stack Trace:", result.stack);
+                showToast(`${result.message || 'Login failed'}`, 'error');
+                if (result.stack) console.error('Server Stack Trace:', result.stack);
             }
         } catch (error) {
             console.error("Network Error:", error);
-            alert('An error occurred during login. Please try again.');
+            showToast('Network error — please try again', 'error');
         } finally {
             submitBtn.disabled = false;
             submitBtn.innerText = 'LOGIN';

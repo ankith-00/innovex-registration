@@ -64,19 +64,21 @@
 .btn-logout {
     font-family: var(--font-jetbrains);
     font-size: 0.8em;
-    padding: 0.5em 1.5em;
-    background: transparent;
-    color: rgba(255, 80, 80, 0.9);
-    border: 1px solid rgba(255, 80, 80, 0.5);
+    padding: 0.55em 2.2em;
+    background: #ef4444;
+    color: #fff;
+    border: none;
     cursor: pointer;
-    letter-spacing: 1px;
-    transition: all 0.25s ease;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 0.22s ease;
     clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
 }
 
 .btn-logout:hover {
-    background: rgba(255, 80, 80, 0.12);
-    color: #ff5050;
+    background: rgba(239, 68, 68, 0.8);
+    box-shadow: 0 0 14px rgba(239, 68, 68, 0.35);
 }
 
 
@@ -86,6 +88,16 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1.2em;
     margin-bottom: 2em;
+}
+
+.stats-row--two {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 700px;
+}
+
+.stats-row--one {
+    grid-template-columns: 1fr;
+    max-width: 320px;
 }
 
 .stat-card {
@@ -110,7 +122,7 @@
     font-family: var(--font-baron);
     font-size: clamp(2rem, 3vw + 1rem, 3rem);
     color: var(--cyon-color);
-    line-height: 1;
+    line-height: 1.5;
 }
 
 .stat-label {
@@ -199,7 +211,7 @@ table th {
 
 table td {
     font-family: var(--font-lexend);
-    font-size: 0.82em;
+    font-size: 0.85em;
     color: rgba(255, 255, 255, 0.8);
     padding: 0.85em 1.2em;
     border-bottom: 1px solid rgba(0, 243, 255, 0.06);
@@ -232,7 +244,7 @@ table tbody tr:last-child td {
 }
 
 .td-members {
-    font-size: 0.78em;
+    font-size: 0.85em;
     color: rgba(255, 255, 255, 0.6);
     max-width: 200px;
 }
@@ -252,7 +264,7 @@ table tbody tr:last-child td {
 
 .td-date {
     font-family: var(--font-jetbrains);
-    font-size: 0.72em;
+    font-size: 0.9em;
     color: rgba(255, 255, 255, 0.35);
     white-space: nowrap;
 }
@@ -261,6 +273,70 @@ table tbody tr:last-child td {
     font-family: var(--font-jetbrains);
     font-size: 0.75em;
     color: rgba(255, 200, 100, 0.85);
+    padding-right: 0;
+}
+
+/* --- ATTENDANCE CELL --- */
+.th-att,
+.td-att {
+    text-align: center;
+    vertical-align: middle;
+    padding-left: 0;
+}
+
+/* --- ATTENDANCE PILL --- */
+.att-pill {
+    display: inline-block;
+    font-family: var(--font-lexend);
+    font-size: 0.8em;
+    letter-spacing: 0.8px;
+    padding: 0.6em 1.5em;
+    border-radius: 0.4em;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.att-present {
+    background: rgba(74, 222, 128, 0.12);
+    border: 1px solid rgba(74, 222, 128, 0.45);
+    color: #4ade80;
+}
+
+.att-absent {
+    background: rgba(248, 113, 113, 0.12);
+    border: 1px solid rgba(248, 113, 113, 0.45);
+    color: #f87171;
+}
+
+.att-none {
+    color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: transparent;
+}
+
+/* --- MEMBER NUMBERED LIST --- */
+.member-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+    margin-top: 0.15em;
+}
+
+.member-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4em;
+    font-size: 0.92em;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.4;
+}
+
+.member-num {
+    font-family: var(--font-jetbrains);
+    font-size: 0.78em;
+    color: rgba(0, 255, 255, 0.45);
+    flex-shrink: 0;
+    min-width: 1.4em;
 }
 
 .empty-row td {
@@ -275,7 +351,6 @@ table tbody tr:last-child td {
 .member-list {
     font-size: 0.92em;
     color: rgba(255, 255, 255, 0.55);
-    display: block;
 }
 
 .event-tag {
@@ -312,7 +387,9 @@ table tbody tr:last-child td {
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 
@@ -335,7 +412,212 @@ table tbody tr:last-child td {
 }
 
 
-/* --- STATUS MODAL & BUTTONS --- */
+/* --- ACTION BUTTON (Edit Info) --- */
+.td-action {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.btn-edit-info {
+    font-family: var(--font-jetbrains);
+    font-size: 0.85em;
+    padding: 0.8em 2em;
+    background: var(--cyon-color);
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.22s ease;
+    white-space: nowrap;
+    clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 7px 100%, 0 calc(100% - 7px));
+}
+
+.btn-edit-info:hover {
+    background: rgba(0, 255, 255, 0.78);
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+}
+
+.btn-edit-info:active {
+    transform: scale(0.96);
+}
+
+
+/* --- EDIT INFO MODAL --- */
+.edit-modal-content {
+    background: rgba(5, 10, 15, 0.97);
+    border: 1px solid rgba(255, 107, 53, 0.4);
+    border-radius: 10px;
+    width: min(620px, 96vw);
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 40px rgba(255, 107, 53, 0.12), 0 0 80px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+}
+
+.edit-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4em 1.8em 1em 1.8em;
+    border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+    flex-shrink: 0;
+}
+
+.edit-modal-title {
+    font-family: var(--font-baron);
+    font-size: 1.1em;
+    color: #ff6b35;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.edit-modal-close {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1.2em;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+    padding: 0.2em;
+}
+
+.edit-modal-close:hover {
+    color: #fff;
+}
+
+.edit-modal-body {
+    padding: 1.5em 1.8em;
+    overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.edit-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35em;
+}
+
+.edit-label {
+    font-family: var(--font-jetbrains);
+    font-size: 0.7em;
+    color: rgba(255, 107, 53, 0.8);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.edit-input {
+    font-family: var(--font-jetbrains);
+    font-size: 0.84em;
+    padding: 0.6em 1em;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(0, 243, 255, 0.18);
+    color: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    transition: border-color 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.edit-input:focus {
+    outline: none;
+    border-color: rgba(0, 243, 255, 0.5);
+    background: rgba(0, 255, 255, 0.04);
+}
+
+.edit-select {
+    font-family: var(--font-jetbrains);
+    font-size: 0.84em;
+    padding: 0.6em 1em;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(0, 243, 255, 0.18);
+    color: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    transition: border-color 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    appearance: auto;
+}
+
+.edit-select option {
+    background: #0a0f14;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.edit-select:focus {
+    outline: none;
+    border-color: rgba(0, 243, 255, 0.5);
+}
+
+.edit-section-label {
+    font-family: var(--font-jetbrains);
+    font-size: 0.68em;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding-bottom: 0.2em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    margin-top: 0.4em;
+}
+
+.edit-modal-footer {
+    display: flex;
+    gap: 1em;
+    justify-content: flex-end;
+    padding: 1em 1.8em 1.4em 1.8em;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    flex-shrink: 0;
+}
+
+.btn-edit-cancel {
+    font-family: var(--font-jetbrains);
+    font-size: 0.82em;
+    padding: 0.65em 1.5em;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.55);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 0.5px;
+}
+
+.btn-edit-cancel:hover {
+    border-color: rgba(255, 255, 255, 0.45);
+    color: #fff;
+}
+
+.btn-edit-update {
+    font-family: var(--font-jetbrains);
+    font-size: 0.82em;
+    padding: 0.65em 1.8em;
+    background: rgba(255, 107, 53, 0.15);
+    border: 1px solid rgba(255, 107, 53, 0.6);
+    color: #ff6b35;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 0.5px;
+}
+
+.btn-edit-update:hover {
+    background: rgba(255, 107, 53, 0.3);
+    border-color: #ff6b35;
+    color: #fff;
+}
+
+.btn-edit-update:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .btn-mark-status {
     font-family: var(--font-jetbrains);
     font-size: 0.75em;

@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 
-// Parse a single cookie value from the raw Cookie header (no cookie-parser needed)
 function parseCookie(cookieHeader, name) {
     if (!cookieHeader) return null;
     const match = cookieHeader.match(new RegExp('(?:^|;\\s*)' + name + '=([^;]*)'));
@@ -8,11 +7,9 @@ function parseCookie(cookieHeader, name) {
 }
 
 const authenticateToken = (req, res, next) => {
-    // 1. Try Authorization: Bearer <token> header (API calls)
     const authHeader = req.headers['authorization'];
     let token = authHeader && authHeader.split(' ')[1];
 
-    // 2. Fall back to cookie (browser page loads)
     if (!token) {
         token = parseCookie(req.headers['cookie'], 'token');
     }
@@ -28,4 +25,4 @@ const authenticateToken = (req, res, next) => {
     });
 };
 
-module.exports = authenticateToken;
+module.exports = authenticateToken;
