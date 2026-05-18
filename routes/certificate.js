@@ -17,119 +17,140 @@ router.post('/generate', async (req, res) => {
 
         await mongoose.connection.asPromise();
         const collection = mongoose.connection.db.collection('registration-data');
-        
-        // Find registration by email (case-insensitive regex to handle mixed case inputs)
+
+        // Find registration by email (case-insensitive)
         const reg = await collection.findOne({ email: new RegExp(`^${email.trim()}$`, 'i') });
 
         if (!reg) {
-            return res.render('certificate', { 
-                currentPage: '/certificate', 
-                error: 'No registration found with this email address.' 
+            return res.render('certificate', {
+                currentPage: '/certificate',
+                error: 'No registration found with this email address.'
             });
         }
 
         let members = Array.isArray(reg.members) ? reg.members : [reg.members].filter(Boolean);
-        
-        // If team members array is somehow empty but they have a team name or just registered,
-        // we could fallback to email or something, but usually members array contains the names.
+
+        members = members.filter(memberName => {
+            if (!memberName) return false;
+            const name = String(memberName).trim();
+            const lowerName = name.toLowerCase();
+
+            // Check for empty, dashes, "None", or length <= 5
+            if (name === '' || name.includes('-') || lowerName.includes('none') || name.length <= 5) {
+                return false;
+            }
+            return true;
+        });
+
         if (members.length === 0) {
-             return res.render('certificate', { 
-                currentPage: '/certificate', 
-                error: 'No team members found for this registration. Contact admin.' 
+            return res.render('certificate', {
+                currentPage: '/certificate',
+                error: 'No valid team members found for this registration. Contact admin.'
             });
         }
 
-        // Create a new PDF Document
+        // Load background template
+        const templatePath = path.join(__dirname, '../public/assets/certificate.png');
+        if (!fs.existsSync(templatePath)) {
+            return res.status(500).send('Certificate template not found. Please contact admin.');
+        }
+        const templateBytes = fs.readFileSync(templatePath);
+
+        // Create PDF
         const pdfDoc = await PDFDocument.create();
 
-        // Standard Font as fallback
-        const font = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
-        const subFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+        // Embed fonts
+        const fontBold = await pdfDoc.embedFont(StandardFonts.TimesRomanBold);
 
-        // Load background template if it exists
-        const templatePath = path.join(__dirname, '../public/assets/certificate-template.png');
-        let templateImage = null;
-        if (fs.existsSync(templatePath)) {
-            const templateBytes = fs.readFileSync(templatePath);
-            templateImage = await pdfDoc.embedPng(templateBytes);
-        }
+        // Embed the PNG template
+        const templateImage = await pdfDoc.embedPng(templateBytes);
+
+        // A4 Landscape: 841.89 x 595.28 pt
+        // We'll use the image's natural aspect ratio scaled to A4 landscape
+        const pageWidth = 841.89;
+        const pageHeight = 595.28;
 
         for (const memberName of members) {
-            const page = templateImage 
-                ? pdfDoc.addPage([templateImage.width, templateImage.height])
-                : pdfDoc.addPage([841.89, 595.28]); // A4 landscape fallback
+            const page = pdfDoc.addPage([pageWidth, pageHeight]);
 
-            const { width, height } = page.getSize();
-
-            if (templateImage) {
-                page.drawImage(templateImage, {
-                    x: 0,
-                    y: 0,
-                    width,
-                    height
-                });
-            } else {
-                // Draw a fallback border if no template is provided
-                page.drawRectangle({
-                    x: 20, y: 20, width: width - 40, height: height - 40,
-                    borderColor: rgb(0, 1, 1), borderWidth: 5
-                });
-                const titleText = 'CERTIFICATE OF PARTICIPATION';
-                const titleWidth = font.widthOfTextAtSize(titleText, 35);
-                page.drawText(titleText, {
-                    x: width / 2 - titleWidth / 2,
-                    y: height - 120,
-                    size: 35,
-                    font,
-                    color: rgb(0, 0.8, 0.8),
-                });
-            }
-
-            const nameText = String(memberName).toUpperCase();
-            const collegeText = String(reg.collegeName || 'Unknown College').toUpperCase();
-            const eventText = String(reg.eventName || 'Event').toUpperCase();
-
-            // Overlay Text Logic - Assuming center alignment.
-            // These coordinates will likely need adjustment based on the actual template image.
-            const nameWidth = font.widthOfTextAtSize(nameText, 45);
-            page.drawText(nameText, {
-                x: (width / 2) - (nameWidth / 2),
-                y: height / 2,
-                size: 45,
-                font: font,
-                color: rgb(0, 0, 0)
+            // Draw background image stretched to full page
+            page.drawImage(templateImage, {
+                x: 0,
+                y: 0,
+                width: pageWidth,
+                height: pageHeight,
             });
 
-            const subText = `for successfully participating in ${eventText}`;
-            const subWidth = subFont.widthOfTextAtSize(subText, 20);
-            page.drawText(subText, {
-                x: (width / 2) - (subWidth / 2),
-                y: height / 2 - 50,
-                size: 20,
-                font: subFont,
-                color: rgb(0.2, 0.2, 0.2)
+            // ─────────────────────────────────────────────────────────────
+            // TEXT OVERLAY — coordinates tuned to match the certificate design
+            //
+            // The certificate layout (top→bottom):
+            //   • Header logos/text (pre-printed on image)
+            //   • "CERTIFICATE OF PARTICIPATION" (pre-printed)
+            //   • "This is to certify that" (pre-printed)
+            //   • "Mr/MS. ______[NAME]______ of"  ← NAME goes here
+            //   • "______[COLLEGE]______ has"     ← COLLEGE goes here
+            //   • Body paragraph (pre-printed)
+            //   • Signature block (pre-printed)
+            // ─────────────────────────────────────────────────────────────
+
+            const name = String(memberName).trim();
+            const college = String(reg.collegeName || '').trim();
+
+            // pdf-lib coordinate system: Y=0 is BOTTOM of page, Y=pageHeight is TOP
+            // Page height = 595.28pt (A4 landscape)
+            //
+            // From the certificate image (top→bottom):
+            //   "Mr/MS. ___[NAME]___ of"   → ~57% from top → y ≈ 595 * 0.43 ≈ 256
+            //   "___[COLLEGE]___ has"       → ~65% from top → y ≈ 595 * 0.35 ≈ 208
+
+            const nameFontSize = 22;
+            const collegeFontSize = 22;
+
+            // --- NAME LINE (Mr/MS. line) ---
+            // Underline runs from after "Mr/MS. " (~x=155) to before "of" (~x=770)
+            const nameLineLeft = 10;
+            const nameLineRight = 700;
+            const nameLineY = 290;   // y from bottom
+
+            const nameWidth = fontBold.widthOfTextAtSize(name, nameFontSize);
+            const nameX = nameLineLeft + (nameLineRight - nameLineLeft) / 2 - nameWidth / 2;
+
+            page.drawText(name, {
+                x: nameX,
+                y: nameLineY,
+                size: nameFontSize,
+                font: fontBold,
+                color: rgb(0, 0, 0),
             });
 
-            const collegeLine = `from ${collegeText}`;
-            const collegeWidth = subFont.widthOfTextAtSize(collegeLine, 20);
-            page.drawText(collegeLine, {
-                x: (width / 2) - (collegeWidth / 2),
-                y: height / 2 - 80,
-                size: 20,
-                font: subFont,
-                color: rgb(0.2, 0.2, 0.2)
+            // --- COLLEGE LINE (second blank line) ---
+            // Underline runs from ~x=60 to before "has" (~x=750)
+            const collegeLineLeft = 60;
+            const collegeLineRight = 700;
+            const collegeLineY = 240;   // y from bottom
+
+            const collegeWidth = fontBold.widthOfTextAtSize(college, collegeFontSize);
+            const collegeX = collegeLineLeft + (collegeLineRight - collegeLineLeft) / 2 - collegeWidth / 2;
+
+            page.drawText(college, {
+                x: collegeX,
+                y: collegeLineY,
+                size: collegeFontSize,
+                font: fontBold,
+                color: rgb(0, 0, 0),
             });
         }
 
         const pdfBytes = await pdfDoc.save();
 
         res.setHeader('Content-Type', 'application/pdf');
-        res.setHeader('Content-Disposition', `attachment; filename="${reg.teamName || 'Team'}_Certificates.pdf"`);
+        res.setHeader('Content-Disposition', `attachment; filename="${(reg.teamName || 'Team').replace(/\s+/g, '_')}_Certificates.pdf"`);
         res.send(Buffer.from(pdfBytes));
 
     } catch (error) {
-        console.error("Certificate Generation Error:", error);
-        res.status(500).send("An error occurred while generating certificates.");
+        console.error('Certificate Generation Error:', error);
+        res.status(500).send('An error occurred while generating certificates.');
     }
 });
 

@@ -61,10 +61,15 @@ router.get('/dashboard', authenticateToken, async (req, res) => {
         await mongoose.connection.asPromise();
         const collection = mongoose.connection.db.collection('registration-data');
 
+
         let registrations;
         if (isAdmin) {
             // Admin: all registrations, newest first
             registrations = await collection.find({}).sort({ submittedAt: -1 }).toArray();
+
+            console.log(registrations);
+
+
         } else {
             // Volunteer: only their assigned event, newest first
             registrations = await collection.find({ eventName: event }).sort({ submittedAt: -1 }).toArray();
@@ -111,7 +116,7 @@ router.patch('/dashboard/status/:id', authenticateToken, async (req, res) => {
         if (!reg) {
             return res.status(404).json({ success: false, message: "Registration not found" });
         }
-        
+
         const wasPresent = reg.attendance === 'present';
 
         const result = await collection.updateOne(
@@ -177,7 +182,7 @@ router.patch('/dashboard/update/:id', authenticateToken, async (req, res) => {
         if (!reg) {
             return res.status(404).json({ success: false, message: 'Registration not found' });
         }
-        
+
         const wasPresent = reg.attendance === 'present';
 
         const result = await collection.updateOne(
