@@ -96,7 +96,7 @@ if (form) {
         // console.log(data);
 
         try {
-            const response = await fetch('/register', {
+            const response = await fetch('/registration/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

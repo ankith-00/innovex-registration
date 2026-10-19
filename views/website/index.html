@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INNOVEX 2.0 ( Compete, Innovate, Conquer )</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="main-logo">
+            <h1>INNOVE<span>X</span></h1>
+            <p>COMPETE INNOVATE CONQUER</p>
+        </div>
+
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span class="hamburger"></span>
+        </label>
+
+        <div class="links-btn">
+            <a href="#">Home</a>
+            <a href="#about">About</a>
+            <a href="#events">Events</a>
+            <a href="#gallery">Gallery</a>
+            <!-- <a href="#sponsors">Sponsors</a> -->
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
+            <a href="https://canva.link/uuswg2rgvxjllfp" class="brochure-btn" target="_blank">get Brochure</a>
+            <button class="btn-primary" onclick="window.open('/registration', '_blank');">
+                Register Now
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <div class="viewport">
+
+
+        <svg class="grid-layer" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="dashedGrid" width="18" height="18" patternTransform="scale(2)"
+                    patternUnits="userSpaceOnUse">
+                    <rect width="100%" height="100%" fill="#020408" />
+                    <path d="M20 0H0v20" fill="none" stroke="#1e211d" stroke-width="0.8" stroke-dasharray="2,2" />
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#dashedGrid)" />
+        </svg>
+
+        <div class="hero-content">
+            <!-- Registration Live Status -->
+            <div class="reg-status-container">
+                <span class="status-dot"></span>
+                <span class="reg-status">Registrations are live</span>
+            </div>
+
+            <div class="hero-logo-wrap">
+                <span class="word-innove" data-text="INNOVE">INNOVE</span>
+                <span class="letter-x" data-text="X">X</span>
+                <span class="suffix">2.0</span>
+            </div>
+            <div class="tagline">
+                <p>COMPETE</p>
+                <P>INNOVATE</P>
+                <P>CONQUER</P>
+            </div>
+
+
+            <!-- Calendar -->
+            <div class="event-date">
+                <div class="icon-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="calendar-icon">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                </div>
+                <span>May 4th & 5th, 2026</span>
+            </div>
+
+
+            <!-- Counter  -->
+            <div class="countdown-container">
+                <div class="corner-mark top-left">+</div>
+                <div class="corner-mark top-right">+</div>
+                <div class="corner-mark bottom-left">+</div>
+                <div class="corner-mark bottom-right">+</div>
+
+                <div class="countdown-item">
+                    <span id="days">00</span>
+                    <label>Days</label>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours">00</span>
+                    <label>Hrs</label>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes">00</span>
+                    <label>Min</label>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds">00</span>
+                    <label>Sec</label>
+                </div>
+            </div>
+
+
+            <div class="hero-btns">
+                <a href="/registration" target="_blank" class="btn-primary">Register Now</a>
+                <a href="#events" class="btn-outline">Explore Events</a>
+            </div>
+
+        </div>
+
+        <canvas id="hero-canvas"></canvas>
+    </div>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section" id="about">
+        <div class="about-header">
+            <p class="about-tag">// ABOUT THE EVENT</p>
+            <h2 class="about-title">WHERE CODE<br>MEETS <span class="about-highlight">CHAOS</span></h2>
+            <p class="about-description">Get ready for Innovex 2.0 ! The Department of Computer Science at BCU is back
+                with the second edition of our flagship inter-college fest, and it’s bigger than ever. With 12
+                high-energy events covering everything from deep-tech challenges to creative non-technical domains,
+                there is something for everyone. Whether you're here to compete, collaborate, or innovate, Innovex
+                promises an epic experience packed with talent and fun. Don't miss out on the ultimate student showdown!
+            </p>
+        </div>
+
+        <div class="about-stats-grid">
+            <div class="about-stat-card">
+                <div class="stat-corner top-left-corner"></div>
+                <div class="stat-corner top-right-corner"></div>
+                <div class="stat-corner bottom-left-corner"></div>
+                <div class="stat-corner bottom-right-corner"></div>
+                <span class="stat-value">600+</span>
+                <span class="stat-label">Participants</span>
+            </div>
+            <div class="about-stat-card">
+                <div class="stat-corner top-left-corner"></div>
+                <div class="stat-corner top-right-corner"></div>
+                <div class="stat-corner bottom-left-corner"></div>
+                <div class="stat-corner bottom-right-corner"></div>
+                <span class="stat-value">40k</span>
+                <span class="stat-label">Prize Pool</span>
+            </div>
+            <div class="about-stat-card">
+                <div class="stat-corner top-left-corner"></div>
+                <div class="stat-corner top-right-corner"></div>
+                <div class="stat-corner bottom-left-corner"></div>
+                <div class="stat-corner bottom-right-corner"></div>
+                <span class="stat-value">10+</span>
+                <span class="stat-label">Events</span>
+            </div>
+            <div class="about-stat-card">
+                <div class="stat-corner top-left-corner"></div>
+                <div class="stat-corner top-right-corner"></div>
+                <div class="stat-corner bottom-left-corner"></div>
+                <div class="stat-corner bottom-right-corner"></div>
+                <span class="stat-value">36+</span>
+                <span class="stat-label">Hours of Innovation</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVENTS SECTION -->
+    <section class="events-section" id="events">
+        <div class="about-header">
+            <p class="about-tag">// What to Expect</p>
+            <h2 class="about-title">EVENTS </h2>
+        </div>
+
+        <div class="events-grid">
+
+
+            <!-- EVENT CARD - 1 ( WEBDESIGNING ) -->
+            <div class="event-card">
+                <div class="card-number">01</div>
+                <h3 class="event-card-heading">WEBSPRINT</h3>
+                <p class="event-card-subheading">{ web designing }</p>
+                <p class="event-card-text">The Web Designing Event at our inter-college fest brings together creative
+                    minds to design innovative, user-friendly websites in a competitive environment.
+                </p>
+                <div class="event-card-labels">
+                    <span class="event-label">Team size 2</span>
+                    <span class="event-label">90 MIN</span>
+                </div>
+                <div class="event-card-buttons">
+                    <button class="btn-outline" id="viewmore">View More</button>
+                    <button class="btn-primary"
+                        onclick="window.open('/registration', '_blank');">
+                        Register Now
+                    </button>
+                </div>
+            </div>
+
+
+
+            <!-- EVENT CARD - 2 ( QUIZ ) -->
+            <div class="event-card">
+                <div class="card-number">02</div>
+                <h3 class="event-card-heading">BRAINY BYTE</h3>
+                <p class="event-card-subheading">{ technical quiz }</p>
+                <p class="event-card-text">A fast-paced challenge that tests knowledge, accuracy, and quick thinking
+                    across diverse topics.</p>
+                <div class="event-card-labels">
+                    <span class="event-label">Team SIZE 2 - 3</span>
+                    <span class="event-label">4 rounds</span>
+                </div>
+                <div class="event-card-buttons">
+                    <button class="btn-outline" id="viewmore">View More</button>
+                    <button class="btn-primary"
+                        onclick="window.open('/registration', '_blank');">
+                        Register Now
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- EVENT CARD - 3 ( CODING & DEBUGGING ) -->
+            <div class="event-card">
+                <div class="card-number">03</div>
+                <h3 class="event-card-heading">BUGXPLOIT</h3>
+                <p class="event-card-subheading">{ Coding and debugging }</p>
+                <p class="event-card-text">A competitive challenge where participants showcase their programming skills
+                    by solving problems and efficiently identifying and fixing errors in code.</p>
+                <div class="event-card-labels">
+                    <span class="event-label">Team size 2</span>
+                    <span class="event-label">3 rounds</span>
+                </div>
+                <div class="event-card-buttons">
+                    <button class="btn-outline" id="viewmore">View More</button>
+                    <button class="btn-primary"
+                        onclick="window.open('/registration', '_blank');">
+                        Register Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- EVENT CARD - 4 ( 12 HRS HACKATHON ) -->
+            <div class="event-card">
+                <div class="card-number">04</div>
+                <h3 class="event-card-heading">innovate x</h3>
+                <p class="event-card-subheading">{ 6 HRS HACKATHON }</p>
+                <p class="event-card-text">Code, innovate, and collaborate non-stop in a 6-hour battle of ideas and
+                    skills. Push your limits, solve challenges, and turn your creativity into reality.</p>
+                <div class="event-card-labels">
+                    <span class="event-label">Team size 3 - 4</span>
+                    <span class="event-label">6 hrs</span>
+                </div>
+                <div class="event-card-buttons">
+                    <button class="btn-outline" id="viewmore">View More</button>
+                    <button class="btn-primary"
+                        onclick="window.open('/registration', '_blank');">
+                        Register Now
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- EVENT CARD - 5 ( DEBATE ) -->
+            <div class="event-card">
+                <div class="card-number">05</div>
+                <h3 class="event-card-heading">THE ARGUMENT ARENA</h3>
+                <p class="event-card-subheading">{ Debate }</p>
+                <p class="event-card-text">An engaging forum where participants present arguments, exchange ideas, and
+                    showcase critical thinking and public speaking skills.</p>
+                <div class="event-card-labels">
+                    <span class="event-label">Team size 3 - 4</span>
+                    <span class="event-label">10 MIN</span>
+                </div>
+                <div class="event-card-buttons">
+                    <button class="btn-outline" id="viewmore">View More</button>
+                    <button class="btn-primary"
+                        onclick="window.open('/registration', '_blank');">
+                        Register Now
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- EVENT CARD - 6 ( Elocution  ) -->
+            <div class="event-card">
+                <div class="card-number">06</div>
+                <h3 class="event-card-heading">Battle of words </h3>
+                <p class="event-card-subheading">{ Elocution }</p>
+                <p class="event-card-text">A platform for participants to express ideas with confidence, showcasing
+                    their eloquence, clarity, and public speaking skills.</p>
+                <div class="event-card-labels">
+                    <span class="event-label">individual</span>
+                    <span class="event-label">2 rounds</span>
+                </div>
+                <div class="event-card-buttons">
+                    <button class="btn-outline" id="viewmore">View More</button>
+                    <button class="btn-primary"
+                        onclick="window.open('/registration', '_blank');">
+                        Register Now
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- EVENT CARD - 7 ( MOCK INTERVIEW ) -->
+            <!-- <div class="event-card">
+                <div class="card-number">07</div>
+                <h3 class="event-card-heading">Campus2Corporate</h3>
+                <p class="event-card-subheading">{ MOCK INTERVIEW }</p>
+                <p class="event-card-text">A practical session where participants demonstrate their communication
+                    skills, professionalism, and readiness for real-world job interviews.</p>
+                <div class="event-card-labels">
+                    <span class="event-label">individual</span>
+                    <span class="event-label">4 rounds</span>
+                </div>
+                <div class="event-card-buttons">
+                    <button class="btn-outline" id="viewmore">View More</button>
+                    <button class="btn-primary"
+                        onclick="window.open('/registration', '_blank');">
+                        Register Now
+                    </button>
+                </div>
+            </div> -->
+
+
+            <!-- EVENT CARD - 8 ( FREE FIRE ) -->
+            <div class="event-card">
+                <div class="card-number">07</div>
+                <h3 class="event-card-heading">Survivor’s Arena</h3>
+                <p class="event-card-subheading">{ FREE FIRE GAME }</p>
+                <p class="event-card-text">Gear up, drop in, and battle your way to victory in the ultimate Free Fire
+                    showdown! Only the sharpest shooters and smartest strategists will claim the crown</p>
+                <div class="event-card-labels">
+                    <span class="event-label">team size 5</span>
+                    <span class="event-label">b2b 3 matches</span>
+                </div>
+                <div class="event-card-buttons">
+                    <button class="btn-outline" id="viewmore">View More</button>
+                    <button class="btn-primary"
+                        onclick="window.open('/registration', '_blank');">
+                        Register Now
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- EVENT CARD - 9 ( BGMI ) -->
+            <div class="event-card">
+                <div class="card-number">08</div>
+                <h3 class="event-card-heading">Victory Royale</h3>
+                <p class="event-card-subheading">{ BGMI Game }</p>
+                <p class="event-card-text">Drop in, gear up, and fight your way to glory in the ultimate BGMI battle!
+                    Only the sharpest shooters and smartest strategists will survive to claim victory.</p>
+                <div class="event-card-labels">
+                    <span class="event-label">team size 5</span>
+                    <span class="event-label">3 matches</span>
+                </div>
+                <div class="event-card-buttons">
+                    <button class="btn-outline" id="viewmore">View More</button>
+                    <button class="btn-primary"
+                        onclick="window.open('/registration', '_blank');">
+                        Register Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- EVENT CARD - 10 ( STARTUP PITCH ) -->
+            <div class="event-card">
+                <div class="card-number">09</div>
+                <h3 class="event-card-heading">innovator's arena</h3>
+                <p class="event-card-subheading">{ startup pitch }</p>
+                <p class="event-card-text">Present your innovative ideas and convince the judges with your vision. Turn
+                    creativity into opportunity. and inspire the next big startup success</p>
+                <div class="event-card-labels">
+                    <span class="event-label">team size 2 - 3</span>
+                    <span class="event-label">15 min</span>
+                </div>
+                <div class="event-card-buttons">
+                    <button class="btn-outline" id="viewmore">View More</button>
+                    <button class="btn-primary"
+                        onclick="window.open('/registration', '_blank');">
+                        Register Now
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- EVENT CARD - 11 ( SHORT FLIM MAKING ) -->
+            <div class="event-card">
+                <div class="card-number">10</div>
+                <h3 class="event-card-heading">CINE SPARK</h3>
+                <p class="event-card-subheading">{ Short film making }</p>
+                <p class="event-card-text">Bring your stories to life and showcase your creativity in the Short Film
+                    Making event. From script to screen, let your vision captivate and inspire the audience.</p>
+                <div class="event-card-labels">
+                    <span class="event-label">team size 4</span>
+                    <span class="event-label">2 MIN</span>
+                </div>
+                <div class="event-card-buttons">
+                    <button class="btn-outline" id="viewmore">View More</button>
+                    <button class="btn-primary"
+                        onclick="window.open('/registration', '_blank');">
+                        Register Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- EVENT CARD - 12 ( PROMOPT WAR ) -->
+            <div class="event-card">
+                <div class="card-number">11</div>
+                <h3 class="event-card-heading">Mind Sparks</h3>
+                <p class="event-card-subheading">{ PROMPT WAR }</p>
+                <p class="event-card-text">Think fast, write sharp, and let your creativity battle it out in the
+                    ultimate Prompt War. Show off your wit, imagination, and quick thinking to claim victory.</p>
+                <div class="event-card-labels">
+                    <span class="event-label">individual</span>
+                    <span class="event-label">3 rounds</span>
+                </div>
+                <div class="event-card-buttons">
+                    <button class="btn-outline" id="viewmore">View More</button>
+                    <button class="btn-primary"
+                        onclick="window.open('/registration', '_blank');">
+                        Register Now
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="gallery-section" id="gallery">
+        <div class="about-header">
+            <p class="about-tag">// GLIMPSE OF PAST</p>
+            <h2 class="about-title">GALLERY</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://i.ibb.co/KcY7CFvF/innovex-01.webp" alt="Gallery Image 1">
+                <p class="gallery-label">All round winners ( Kristu Jayanti College )</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.ibb.co/XxNbJkJB/innovex-02.webp" alt="Gallery Image 2">
+                <p class="gallery-label">Innovex 2025</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.ibb.co/7JgG6S8b/innovex-03.webp" alt="Gallery Image 3">
+                <p class="gallery-label">Innovex 2025 ( core team )</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.ibb.co/rK6v9GxM/innovex-04.webp" alt="Gallery Image 4">
+                <p class="gallery-label">quiz team</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.ibb.co/xtsdVgDW/innovex-05.webp" alt="Gallery Image 5">
+                <p class="gallery-label">Hackathon ( Project Presentation )</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.ibb.co/pmF4y2G/innovex-06.webp" alt="Gallery Image 6">
+                <p class="gallery-label">Hackathon team</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPONSORS SECTION -->
+    <!-- <section class="sponsors-section" id="sponsors">
+        <div class="sponsors-header">
+            <p class="sponsors-tag">// OUR BACKERS</p>
+            <h2 class="sponsors-title">SPONSORS</h2>
+        </div>
+
+        <div class="sponsors-grid">
+            <div class="sponsor-card sponsor-gold">
+                <img src="" alt="Title Sponsor">
+            </div>
+
+            <div class="sponsor-card sponsor-platinum">
+                <img src="./public/images/sponsers/gfg-logo.png" alt="Co-Sponsor" width="70%">
+            </div>
+
+            <div class="sponsor-card sponsor-bronze">
+                <img src="" alt="Associate Sponsor">
+            </div>
+
+            <div class="sponsor-card sponsor-bronze">
+                <img src="" alt="Associate Sponsor">
+            </div>
+
+            <div class="sponsor-card sponsor-bronze">
+                <img src="" alt="Associate Sponsor">
+            </div>
+
+            <div class="sponsor-card sponsor-bronze">
+                <img src="#" alt="Associate Sponsor" width="70%">
+            </div>
+        </div>
+    </section> -->
+
+
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section" id="faq">
+        <div class="faq-header">
+            <p class="faq-tag">// FREQUENTLY ASKED</p>
+            <h2 class="faq-title">FAQ</h2>
+        </div>
+
+        <div class="faq-container">
+            <!-- FAQ 1 -->
+            <div class="faq-item">
+                <input type="checkbox" id="faq1" class="faq-toggle">
+                <label for="faq1" class="faq-question">
+                    <span class="faq-number">01</span>
+                    <span>What is Innovex 2.0 ?</span>
+                    <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </label>
+                <div class="faq-answer">
+                    <p>Innovex 2.0 is the flagship inter-college fest hosted by the Department of Computer Science
+                        at Dr. Manmohan Singh Bengaluru City University. It features 11 high-energy events spanning
+                        deep-tech
+                        challenges like coding and AI to creative domains like filmmaking and debates, providing a
+                        premier platform for students to compete, collaborate, and innovate.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+                <input type="checkbox" id="faq2" class="faq-toggle">
+                <label for="faq2" class="faq-question">
+                    <span class="faq-number">02</span>
+                    <span>How do I register for events?</span>
+                    <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </label>
+                <div class="faq-answer">
+                    <p>To register, click the "Register Now" button on any event card to access the Innovex portal.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+                <input type="checkbox" id="faq3" class="faq-toggle">
+                <label for="faq3" class="faq-question">
+                    <span class="faq-number">03</span>
+                    <span>Can I participate in multiple events ?</span>
+                    <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </label>
+                <div class="faq-answer">
+                    <p>Yes ! You can register for multiple events, provided their schedules don't overlap. To ensure a
+                        fair competition and smooth transitions between rounds, each participant is limited to a maximum
+                        of 3 events.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+                <input type="checkbox" id="faq4" class="faq-toggle">
+                <label for="faq4" class="faq-question">
+                    <span class="faq-number">04</span>
+                    <span>What are the prizes and rewards?</span>
+                    <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </label>
+                <div class="faq-answer">
+                    <p>All the top two winners will receive a cash prize along with exclusive merchandise.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <!-- <div class="faq-item">
+                <input type="checkbox" id="faq5" class="faq-toggle">
+                <label for="faq5" class="faq-question">
+                    <span class="faq-number">05</span>
+                    <span>Is there accommodation for outstation participants?</span>
+                    <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </label>
+                <div class="faq-answer">
+                    <p></p>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+
+
+
+
+    <!-- EVENT MODAL -->
+    <div class="event-modal-overlay" id="eventModalOverlay">
+        <div class="event-modal">
+            <div class="modal-header">
+                <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                        viewBox="0 0 24 24">
+                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                    </svg>
+                    Back
+                </button>
+            </div>
+
+            <div class="modal-wrapper">
+                <h2 class="modal-event-heading" id="modalEventTitle"></h2>
+                <p id="modal-subheading"></p>
+
+                <div class="modal-content">
+                    <div class="guidelines-section">
+                        <h3 class="guidelines-heading">// GUIDELINES</h3>
+                        <ul class="guidelines-list">
+                            <li id="guideline1"></li>
+                            <li id="guideline2"></li>
+                            <li id="guideline3"></li>
+                            <li id="guideline4"></li>
+                            <li id="guideline5"></li>
+                        </ul>
+                    </div>
+
+                    <div class="registration-fee-section">
+                        <h3 class="fee-heading">// REGISTRATION FEE</h3>
+                        <div class="fee-card">
+                            <p class="fee-label-text">Registration Fees</p>
+                            <p class="fee-amount" id="modalFeeAmount"></p>
+                        </div>
+                    </div>
+
+                    <div class="coordinators-section">
+                        <h3 class="coordinators-heading">// COORDINATORS</h3>
+                        <div class="coordinator-card" id="coordinator1">
+                            <p class="coordinator-name"></p>
+                            <p class="coordinator-phone"></p>
+                        </div>
+                        <div class="coordinator-card" id="coordinator2">
+                            <p class="coordinator-name"></p>
+                            <p class="coordinator-phone"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-primary modal-register-btn"
+                    onclick="window.open('/registration', '_blank');">Register Now</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- FOOTER -->
+    <footer class="innovex-footer" id="contact">
+        <!-- Top Branding Area -->
+        <div class="footer-branding">
+            <div class="footer-college-logo">
+                <div class="logo-img-placeholder">
+                    <img src="./public/images/dmsbcu-logo.png" alt="">
+                </div>
+            </div>
+            <p class="college-tagline">DEPARTMENT OF COMPUTER SCIENCE</p>
+            <p class="presents-text">PRESENTS</p>
+            <div class="footer-innovex-logo">
+                <h1>INNOVE<span>X</span></h1>
+                <p>COMPETE INNOVATE CONQUER</p>
+            </div>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <!-- Middle Grid Area -->
+        <div class="footer-grid">
+            <div class="footer-column contact-col">
+                <h3 class="col-title">// CONTACT</h3>
+                <div class="contact-links">
+                    <p><a href="mailto:contact@innovex.io"></a></p>
+                    <p><a href="tel:+918012345678"></a></p>
+                    <p><a href="tel:+919876543210"></a></p>
+                </div>
+
+
+                <!-- Contact Cards -->
+                <div class="contact-cards-container">
+                    <div class="contact-card">
+                        <p class="contact-card-title">Email</p>
+                        <p class="contact-card-value">csdmsbcu@gmail.com</p>
+                    </div>
+                    <div class="contact-card">
+                        <p class="contact-card-title">ANKTIH KUMAR</p>
+                        <p class="contact-card-value">+91 8970898014</p>
+                    </div>
+                    <div class="contact-card">
+                        <p class="contact-card-title">TARUN L</p>
+                        <p class="contact-card-value">+91 9606248621</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-column links-col">
+                <h3 class="col-title">// QUICK LINKS</h3>
+                <ul class="quick-nav">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column location-col">
+                <h3 class="col-title">// LOCATION</h3>
+                <p class="college-address">
+                    Central College, Dr Ambedkar Rd, Sampangi Rama Nagara, Bengaluru, Karnataka 560001
+                </p>
+                <div class="footer-map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1412.0018251218112!2d77.58342674134283!3d12.974870496221072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17d60b096427%3A0x4f280b4fe82cddf!2sBengaluru%20City%20University%20Library!5e0!3m2!1sen!2sin!4v1775030938281!5m2!1sen!2sin"
+                        width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <!-- Made By -->
+        <div class="footer-made-by">
+            <p>MADE WITH 💖 BY <a href="https://www.ankith.dev" target="_blank">ANKITH</a></p>
+        </div>
+
+        <!-- Bottom Copyright -->
+        <div class="footer-copyright">
+            <p>&copy; <span id="currentYear"></span> INNOVEX. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+    <script src="./public/scripts/particleEffect.js"></script>
+
+    <script>
+        // Close mobile menu on link click
+        document.querySelectorAll('.links-btn a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('nav-toggle').checked = false;
+            });
+        });
+
+        // Event Modal Management System
+        class EventModalManager {
+            constructor() {
+                this.modal = document.getElementById('eventModalOverlay');
+                this.closeBtn = document.getElementById('modalCloseBtn');
+                this.eventData = this.initializeEventData();
+                this.init();
+            }
+
+            initializeEventData() {
+                return {
+                    '01': {
+                        fee: '₹ 49',
+                        title: 'WEBSPRINT',
+                        subtitle: '{ WEB DESIGNING }',
+                        guidelines: [
+                            'Teams must consist of 2 members maximum or individual participation',
+                            'Topic will be given on spot ( Series / Product / Event )',
+                            'Team must design a website based on given theme',
+                            'Limited AI assistance is allowed, auto-generated AI tools are prohibited',
+                            'Plagiarism will result in immediate disqualification',
+                            'The judge’s decision will be final.',
+                            'Registration fee is non-refundable.'
+                        ],
+                        coordinators: [
+                            { name: 'Akash B R', phone: '+91 8618605760' },
+                            { name: 'Neha', phone: '+91 8546883613' }
+                        ]
+                    },
+                    '02': {
+                        fee: '₹ 49',
+                        title: 'BRAINY BYTE',
+                        subtitle: '{ technical quiz }',
+                        guidelines: [
+                            'Teams must consist of 2 - 3 members maximum',
+                            'Multiple rounds covering general knowledge, current affairs, science & tech, logical reasoning, and rapid-fire.',
+                            'There will be 4 rounds in total — Preliminary, Visual, Buzzer, and Finale.',
+                            'Each round will have a specific time limit (details announced on the spot).',
+                            'Participants are required to bring their phones /laptop for the preliminary round',
+                            'Plagiarism will result in immediate disqualification',
+                            'The judge’s decision will be final.',
+                            'Registration fee is non-refundable.'
+                        ],
+                        coordinators: [
+                            { name: 'Yuvaraj M', phone: '+91 8088899309' },
+                            { name: 'Vaibhav S', phone: '+91 8197919789' }
+                        ]
+                    },
+                    '03': {
+                        fee: '₹ 49',
+                        title: 'BUGXPLOIT',
+                        subtitle: '{ Coding and debugging }',
+                        guidelines: [
+                            'Participation is strictly for teams of exactly two members. Solo entries are not permitted.',
+                            'The event follows a Three-Round Survival Elimination structure.',
+                            'Rounds are timed. Specific durations for each phase will be announced live at the venue before the start of the challenge.',
+                            'Participants are responsible for bringing their own hardware.',
+                            'Team caught cheating or engaging in plagiarism will result in immediate disqualification from the event.',
+                            'The judge’s decision will be final.',
+                            'Registration fee is non-refundable.'
+                        ],
+                        coordinators: [
+                            { name: 'Pavan Kumar', phone: '+91 88613 29951' },
+                            { name: 'Thrupthi R', phone: '+91 94825 06993' }
+                        ]
+                    },
+                    '04': {
+                        fee: '₹ 49',
+                        title: 'Innovate X',
+                        subtitle: '{ 6 HRS HACKATHON }',
+                        guidelines: [
+                            'Teams must consist of 3 to 4 members.',
+                            'This is a continuous 6-hour sprint. Once the clock starts, teams must manage their time effectively through the ideation, building, and pitching phases',
+                            'Participants must bring their own laptops, chargers, and power strips.',
+                            'All projects must be built from scratch during the 6-hour window. Using pre-existing personal or commercial projects is strictly forbidden.',
+                            'Any team found cheating and plagiarizing face immediate disqualification.',
+                            'The judge’s decision will be final.',
+                            'Registration fee is non-refundable.'
+                        ],
+                        coordinators: [
+                            { name: 'Ankith Kumar', phone: '+91 8970898014' },
+                            { name: 'Kalairasan', phone: '+91 89512 51531' }
+                        ]
+                    },
+                    '05': {
+                        fee: '₹ 49',
+                        title: 'THE ARGUMENT ARENA',
+                        subtitle: '{ Debate }',
+                        guidelines: [
+                            'Teams must consist of 3 to 4 members.',
+                            'The competition is divided into three stages : Preliminary 1, Preliminary 2, and Grand Finale.',
+                            'Specific durations for opening statements, rebuttals, and closing arguments will be announced at the start of each round.',
+                            'Strict adherence to the timer is required; points will be deducted for exceeding time.',
+                            'This is a battle of wits, not tempers. Respect your opponents. Personal attacks or derogatory language will result in immediate disqualification.',
+                            'The judge’s decision will be final.',
+                            'Registration fee is non-refundable.'
+                        ],
+                        coordinators: [
+                            { name: 'Meher', phone: '+91 76769 99438' },
+                            { name: 'M Diwakar', phone: '+91 9844479419' }
+                        ]
+                    },
+                    '06': {
+                        fee: '₹ 49',
+                        title: 'Battle of words',
+                        subtitle: '{ Elocution }',
+                        guidelines: [
+                            'This is an individual competition. Group entries are not permitted.',
+                            'The competition consists of 2 Rounds (Regional Level).',
+                            'Participants must prepare their speeches based on the following subtopics : Future Forward and Ethical Tech, Solar Beyond Silicon, Eco-Tech in Agriculture and Conservation and AI for Earth.',
+                            'Content must be original. Plagiarism or reading directly from a script generated by AI will result in a significant point deduction or disqualification.',
+                            'The medium of expression is English.',
+                            'Any form of hate speech, offensive language, or political controversy is strictly prohibited and will lead to immediate disqualification.',
+                            'The judge’s decision will be final.',
+                            'Registration fee is non-refundable.'
+                        ],
+                        coordinators: [
+                            { name: 'Sinchana R L', phone: '+91 7975576145' },
+                            { name: 'Archana S', phone: '+91 9353363546' }
+                        ]
+                    },
+                    // '07': {
+                    //     fee: '₹ 49',
+                    //     title: 'Campus2Corporate',
+                    //     subtitle: '{ MOCK INTERVIEW }',
+                    //     guidelines: [
+                    //         'This is an individual participation event. Collaboration is not permitted at any stage of the recruitment process.',
+                    //         'Participants must have a digital and physical copy of their latest resume ready at the start of Round 1.',
+                    //         'For the "Skill Challenge," participants should be prepared to use provided lab systems or their own laptops as directed by the coordinators.',
+                    //         'Each round is eliminatory. Scores from previous rounds may be used as a tie-breaker in the Final Impression stage.',
+                    //         'Any form of plagiarism, cheating, or use of unauthorized AI tools during the Aptitude or Skill rounds will result in immediate disqualification.',
+                    //         'The decision of the "Hiring Panel" (Judges) is final and binding.',
+                    //         'The judge’s decision will be final.',
+                    //         'Registration fee is non-refundable.'
+                    //     ],
+                    //     coordinators: [
+                    //         { name: 'Sania Begum', phone: '+91 8073849915' },
+                    //         { name: 'Tarun L', phone: '+91  9606248621' }
+                    //     ]
+                    // },
+                    '07': {
+                        fee: '₹ 49',
+                        title: 'Survivor’s Arena',
+                        subtitle: '{ FREE FIRE GAME }',
+                        guidelines: [
+                            'Teams must consist of 4 active players. You are permitted 1 stand-by ( substitute ) player, totaling a maximum roster of 5.',
+                            'Teams will play 3 Back-to-Back (B2B) matches on a full-scale map.',
+                            'Scoring will be based on a combination of placement points and kill counts.',
+                            'The use of any third-party applications, scripts, or modified APKs is strictly prohibited.',
+                            'Any team found teaming up with opponents, using glitches, or engaging in unsportsmanlike conduct will face immediate disqualification.',
+                            'The judge’s decision will be final.',
+                            'Registration fee is non-refundable.'
+                        ],
+                        coordinators: [
+                            { name: 'Sujan Shetty', phone: '+91 9036513037' },
+                            { name: 'Bharath', phone: '+91 7483735493' }
+                        ]
+                    },
+                    '08': {
+                        fee: '₹ 49',
+                        title: 'Victory Royale',
+                        subtitle: '{ BGMI Game }',
+                        guidelines: [
+                            'Teams must consist of 4 active players. You are permitted 1 stand-by ( substitute ) player, totaling a maximum roster of 5.',
+                            'Only mobile phones are allowed',
+                            'Each  team will be play a minimum of 3 matches',
+                            'The use of any third-party applications, scripts, or modified APKs is strictly prohibited.',
+                            'Organizers hold authorith to change the schedule if necessary.',
+                            'Any team found teaming up with opponents, using glitches, or engaging in unsportsmanlike conduct will face immediate disqualification.',
+                            'The judge’s decision will be final.',
+                            'Registration fee is non-refundable.'
+                        ],
+                        coordinators: [
+                            { name: 'Monish', phone: '+91 6362340746' },
+                            { name: 'Yuhanna Lepcha', phone: '+91 9606631284' }
+                        ]
+                    },
+                    '09': {
+                        fee: '₹ 49',
+                        title: 'Innovators Arena',
+                        subtitle: '{ startup pitch }',
+                        guidelines: [
+                            'Each team must consist of minimun of 2 and maximum of 3 members.',
+                            'Upon registration, teams must submit a 100-word summary of their startup idea. This summary will be used for preliminary screening.',
+                            'The presentation must be strictly between 4 to 5 minutes, followed by a 2-minute Q&A. Exceeding the time limit will result in an immediate point deduction',
+                            'Presentations must maintain a professional standard. Content featuring offensive language or inappropriate themes will lead to immediate disqualification.',
+                            'The judge’s decision will be final.',
+                            'Registration fee is non-refundable.'
+                        ],
+                        coordinators: [
+                            { name: 'Tarun L', phone: '+91  9606248621' },
+                            { name: 'Pushpitha', phone: '+91 7676169427' },
+
+                        ]
+                    },
+                    '10': {
+                        fee: '₹ 49',
+                        title: 'CINE SPARK',
+                        subtitle: '{ Short film making }',
+                        guidelines: [
+                            'Teams must have a maximum of 4 members.',
+                            'The core theme of the film is a surprise and will be revealed on the spot at the start of the event.',
+                            'Teams have exactly 5 hours to complete the entire process from scripting and filming to final editing and submission.',
+                            'The final output must have a runtime of 2 to 3 minutes. Short-changing the duration or exceeding the limit will lead to point deductions.',
+                            'Participants must use their own mobile phones or cameras for filming.',
+                            'All footage must be captured live during the 5-hour window. The use of pre-existing stock footage or clips filmed prior to the event is strictly prohibited.0',
+                            'The film must be suitable for a general audience. The use of vulgar language, offensive gestures, or inappropriate themes will result in immediate disqualification.',
+                            'The judge’s decision will be final.',
+                            'Registration fee is non-refundable.'
+                        ],
+                        coordinators: [
+                            { name: 'Saif Ali Khan', phone: '+91 8884335145' },
+                            { name: 'Harinipriya', phone: '+91 9632119115' },
+                            { name: 'Dakshayini', phone: '+91 7676379215' }
+                        ]
+                    },
+                    '11': {
+                        fee: '₹ 49',
+                        title: 'Mind Sparks',
+                        subtitle: '{ PROMPT WAR }',
+                        guidelines: [
+                            'Its solo event',
+                            'The challenge consists of 3 distinct rounds, each with a decreasing constraint on word count.',
+                            'Participants are allowed only ONE prompt submission per round to achieve the specific task provided.',
+                            'Strict adherence to word limits is monitored. Exceeding the limit or any form of unfair practice will result in immediate disqualification.',
+                            'Participants must be prepared for real-time problem-solving and adaptive AI interaction.',
+                            'The judge’s decision will be final.',
+                            'Registration fee is non-refundable.'
+                        ],
+                        coordinators: [
+                            { name: 'Pushpitha', phone: '+91 7676169427' },
+                            { name: 'Tarun L', phone: '+91  9606248621' },
+                        ]
+                    }
+                };
+            }
+
+            init() {
+                this.attachEventListeners();
+                this.setupCloseHandler();
+            }
+
+            attachEventListeners() {
+                document.addEventListener('click', (e) => {
+                    const viewMoreBtn = e.target.closest('#viewmore');
+                    if (viewMoreBtn) {
+                        const eventCard = viewMoreBtn.closest('.event-card');
+                        const eventNumber = eventCard.querySelector('.card-number').textContent;
+                        this.openModal(eventNumber);
+                    }
+                });
+            }
+
+            setupCloseHandler() {
+                this.closeBtn.addEventListener('click', () => this.closeModal());
+                this.modal.addEventListener('click', (e) => {
+                    if (e.target === this.modal) this.closeModal();
+                });
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') this.closeModal();
+                });
+            }
+
+            openModal(eventNumber) {
+                const data = this.eventData[eventNumber.padStart(2, '0')];
+                if (!data) return;
+
+                this.populateModal(data);
+                this.modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            closeModal() {
+                this.modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            populateModal(data) {
+                document.getElementById('modalEventTitle').textContent = data.title;
+                document.getElementById('modal-subheading').textContent = data.subtitle;
+
+                console.log(data.subtitle);
+
+
+                // Populate guidelines
+                const guidelinesList = document.querySelector('.guidelines-list');
+                guidelinesList.innerHTML = '';
+                data.guidelines.forEach((guideline, index) => {
+                    const li = document.createElement('li');
+                    li.textContent = guideline;
+                    guidelinesList.appendChild(li);
+                });
+
+                // Populate registration fee
+                const feeAmount = data.fee || "₹ 100";
+                document.getElementById('modalFeeAmount').textContent = feeAmount;
+
+                // Populate coordinators
+                const coordinatorsSection = document.querySelector('.coordinators-section');
+                const existingCoordinators = coordinatorsSection.querySelectorAll('.coordinator-card');
+                existingCoordinators.forEach(card => card.remove());
+
+                const heading = coordinatorsSection.querySelector('.coordinators-heading');
+                data.coordinators.forEach(coord => {
+                    const coordCard = document.createElement('div');
+                    coordCard.className = 'coordinator-card';
+                    coordCard.innerHTML = `
+                        <p class="coordinator-name">${coord.name}</p>
+                        <p class="coordinator-phone">${coord.phone}</p>
+                    `;
+                    coordinatorsSection.appendChild(coordCard);
+                });
+            }
+        }
+
+
+
+        // Initialize modal manager when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            new EventModalManager();
+
+            // FAQ Accordion: only one open at a time
+            const faqToggles = document.querySelectorAll('.faq-toggle');
+            faqToggles.forEach(toggle => {
+                toggle.addEventListener('change', () => {
+                    if (toggle.checked) {
+                        faqToggles.forEach(other => {
+                            if (other !== toggle) other.checked = false;
+                        });
+                    }
+                });
+            });
+            // Update copyright year
+            const yearSpan = document.getElementById('currentYear');
+            if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+        });
+
+        // Glossy blur navbar on scroll
+        const navbar = document.querySelector('nav');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>

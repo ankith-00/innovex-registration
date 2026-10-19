@@ -65,12 +65,16 @@
             </div>
 
             <!-- STATS ROW -->
-            <div class="stats-row <%= isAdmin ? 'stats-row--two' : 'stats-row--one' %>">
+            <div class="stats-row <%= isAdmin ? 'stats-row--three' : 'stats-row--one' %>">
                 <div class="stat-card">
                     <span class="stat-number" id="totalCount">0</span>
                     <span class="stat-label">Total Registrations</span>
                 </div>
                 <% if (isAdmin) { %>
+                <div class="stat-card">
+                    <span class="stat-number" id="participantCount">0</span>
+                    <span class="stat-label">Total Participants</span>
+                </div>
                 <div class="stat-card">
                     <span class="stat-number" id="eventCount">0</span>
                     <span class="stat-label">Events</span>

@@ -11,6 +11,7 @@ let currentData = [...registrations];
 const tableBody = document.getElementById('tableBody');
 const logoutBtn = document.getElementById('logoutBtn');
 const totalCountEl = document.getElementById('totalCount');
+const participantCountEl = document.getElementById('participantCount');
 const eventCountEl = document.getElementById('eventCount');
 const eventFilter = document.getElementById('eventFilter');   // admin only
 const searchInput = document.getElementById('searchInput');   // admin only
@@ -25,8 +26,10 @@ logoutBtn.addEventListener('click', () => {
 
 // ---- STATS (animated counters) ----
 const uniqueEvents = [...new Set(registrations.map(r => r.eventName))].length;
+const participantCount = countParticipants(registrations);
 
 animateCount(totalCountEl, totalCount);
+if (participantCountEl) animateCount(participantCountEl, participantCount);
 animateCount(eventCountEl, isAdmin ? uniqueEvents : totalCount);
 
 
@@ -64,6 +67,7 @@ function applyFilters() {
     currentData = filtered;
     renderTable(filtered);
     totalCountEl.textContent = filtered.length;
+    if (participantCountEl) participantCountEl.textContent = countParticipants(filtered);
 }
 
 
@@ -267,7 +271,20 @@ function escAttr(str) {
     return String(str).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
+function countParticipants(data) {
+    return data.reduce((count, reg) => {
+        const members = Array.isArray(reg.members) ? reg.members : (reg.members ? [reg.members] : []);
+
+        return count + members.filter(member => {
+            const name = String(member || '').trim().toLowerCase();
+            return name.length > 4 && !name.includes('-') && !name.includes('none');
+        }).length;
+    }, 0);
+}
+
 function animateCount(el, target) {
+    if (!el) return;
+
     let start = 0;
     const duration = 900;
     const startTime = performance.now();
